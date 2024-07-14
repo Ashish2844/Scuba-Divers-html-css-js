@@ -1,0 +1,2259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: arial;
+    }
+
+    .first {
+        overflow: hidden;
+    }
+
+
+    .box {
+        width: 100%;
+        height: 900px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .images {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        display: none;
+    }
+
+
+    .images img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+
+    .prev {
+        border: 0;
+        width: 30px;
+        height: 30px;
+        color: white;
+        font-size: 25px;
+        padding: 0px 70px;
+        padding-right: 30px;
+        border-radius: 10px;
+        position: absolute;
+        top: 50%;
+        transform: translateX(-60px);
+        background-color: rgb(215, 212, 207, 0.7);
+    }
+
+    .nex {
+        border: 0;
+        width: 30px;
+        height: 30px;
+        color: white;
+        font-size: 25px;
+        padding: 0 0;
+        padding-right: 30px;
+        padding-left: 10px;
+        border-radius: 10px;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateX(10px);
+        background-color: rgb(215, 212, 207, 0.7);
+    }
+
+    .text {
+        border: 0;
+        width: 500px;
+        height: 280px;
+        position: absolute;
+        top: 45%;
+        left: 10%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transform: translatex(-600px);
+        transition: transform 1s;
+    }
+
+    .text .a1 {
+        font-size: 60px;
+        color: white;
+    }
+
+    .text .a2 {
+        font-size: 25px;
+        color: darkgray;
+        opacity: 0.9;
+    }
+
+    .text .a3 {
+        width: 130px;
+        border-radius: 15px;
+        background-color: yellow;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 600;
+    }
+
+    .text .a3:hover {
+        background-color: blue;
+        color: white;
+    }
+
+    .top {
+        position: absolute;
+        top: 50px;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .top .b1 {
+        color: white;
+        font-weight: 550;
+        font-size: 20px;
+    }
+
+    .top .b1 span:hover {
+        color: gold;
+    }
+
+    .top .b2 {
+        color: white;
+        font-weight: 700;
+        font-size: 35px;
+        margin-right: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .top .b2 span {
+        font-size: 20px;
+        color: grey;
+        font-weight: 550;
+    }
+
+
+
+    .navbar {
+        border-bottom: 0.5px solid white;
+        border-top: 0.5px solid white;
+        width: 80%;
+        height: 60px;
+        display: flex;
+        position: absolute;
+        top: 150px;
+        left: 120px;
+        color: white;
+        justify-content: space-around;
+        align-items: center;
+        font-weight: 700;
+        z-index: 1;
+    }
+
+    /* .nvbr1{
+        position:fixed;
+        top:0;
+        background-color: white;
+        color:black;
+    }
+
+    .nvbr2{
+        position:fixed;
+        top:150px;
+        background-color: transparent;
+        color:white;
+    } */
+
+    .navbar .n1:hover {
+        color: gold;
+    }
+
+    .navbar .pages {
+        background-color: white;
+        width: 170px;
+        height: 150px;
+        color: black;
+        font-size: 20px;
+        position: absolute;
+        top: 60px;
+        left: 200px;
+        display: none;
+    }
+
+    .navbar .blog {
+        background-color: white;
+        width: 170px;
+        height: 150px;
+        color: black;
+        font-size: 20px;
+        position: absolute;
+        top: 60px;
+        left: 300px;
+        display: none;
+    }
+
+    .navbar .gallery {
+        background-color: white;
+        width: 170px;
+        height: 250px;
+        color: black;
+        font-size: 20px;
+        position: absolute;
+        top: 60px;
+        left: 500px;
+        display: none;
+    }
+
+    .navbar .elements {
+        background-color: white;
+        width: 170px;
+        height: 250px;
+        color: black;
+        font-size: 20px;
+        position: absolute;
+        top: 60px;
+        left: 700px;
+        display: none;
+    }
+
+    .second {
+        border: 0;
+        width: 100%;
+        height: 700px;
+        overflow: hidden;
+    }
+
+    .c1 {
+        border: 0;
+        font-size: 55px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 80px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: 550;
+        transform: scale(0);
+        transition: transform 1s;
+    }
+
+    .c2 {
+        border: 0;
+        height: 500px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .c2a {
+        border: 1px solid grey;
+        width: 32%;
+        height: 90%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: column;
+        transform: translatey(600px);
+        transition: transform 1s;
+    }
+
+    .c2a img {
+        width: 350px;
+        height: 250px;
+    }
+
+    .c2a .sp1 {
+        font-size: 30px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .c2a .sp2 {
+        font-size: 16px;
+        color: darkgray;
+    }
+
+    .c2a div {
+        border-bottom: 2px solid rgb(144, 144, 144);
+        color: rgb(144, 144, 144);
+        font-size: 20px;
+    }
+
+    .c2a:hover {
+        height: 100%;
+        border-radius: 10px;
+        box-shadow: 1px 1px 1px 1px;
+        transition: 1s;
+    }
+
+    .c2a:hover img {
+        width: 380px;
+        height: 280px;
+        transition: 1s;
+    }
+
+    .c2a:hover div {
+        border: 2px solid rgb(3, 175, 243);
+        border-radius: 10px;
+        color: rgb(3, 175, 243);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 1s;
+    }
+
+    .third {
+        border: 0;
+        width: 100%;
+        height: 500px;
+        background-color: #EFF2F7;
+        display: flex;
+        overflow: hidden;
+    }
+
+    .third .bx {
+        border: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        margin-left: 50px;
+    }
+
+    .third .bx1 {
+        border-bottom: 2px solid gray;
+        width: 70%;
+        height: 200px;
+        transform: translateX(-500px);
+        transition: transform 1s;
+    }
+
+    .third .bx2 {
+        border-bottom: 2px solid gray;
+        width: 70%;
+        height: 200px;
+        transform: translateX(-500px);
+        transition: transform 1s;
+    }
+
+    .third .bx3 {
+        border-bottom: 2px solid gray;
+        width: 70%;
+        height: 200px;
+        transform: translateX(500px);
+        transition: transform 1s;
+    }
+
+    .third .bx4 {
+        border-bottom: 2px solid gray;
+        width: 70%;
+        height: 200px;
+        transform: translateX(500px);
+        transition: transform 1s;
+    }
+
+    .d1 {
+        font-size: 30px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        display: flex;
+        justify-content: center;
+    }
+
+    .d2 {
+        font-size: 20px;
+        color: grey;
+        text-align: center;
+    }
+
+
+    .third .bx img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .fourth {
+        width: 100%;
+        height: 400px;
+        background-image: url("animal-21668_1280.jpg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .fourth .f {
+        color: white;
+        width: 300px;
+        height: 200px;
+        font-weight: 700;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .f .f1 {
+        font-size: 50px;
+        border-bottom: 1px solid white;
+    }
+
+    .f .f2 {
+        font-size: 20px;
+        text-align: center;
+        font-weight: 600;
+    }
+
+    .fifth {
+        width: 100%;
+        height: 1000px;
+    }
+
+    .fifth .fi {
+        width: 100%;
+        height: 700px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .fifth .fia {
+        width: 49%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .fifth .fia .slider2 {
+        border: 0;
+        width: 450px;
+        height: 450px;
+        justify-content: space-between;
+        position: relative;
+    }
+
+    .fifth .fia .slider2 .imagess {
+        position: absolute;
+        border: 7px solid gainsboro;
+        width: 100%;
+        height: 100%;
+        border-top-left-radius: 40%;
+        border-top-right-radius: 20%;
+        border-bottom-left-radius: 60%;
+        border-bottom-right-radius: 50%;
+        transform: rotate(-30deg);
+        overflow: hidden;
+    }
+
+    .fifth .fia .slider2 .imagess img {
+        width: 120%;
+        height: 120%;
+        transform: rotate(30deg) translatex(-40px) translatey(-25px);
+    }
+
+    .fifth .fia .dot {
+        width: 100px;
+        height: 20px;
+        display: flex;
+        justify-content: space-around;
+
+    }
+
+    .fifth .fia .dot .d {
+        width: 17px;
+        height: 17px;
+        background-color: darkgrey;
+        border-radius: 50%;
+    }
+
+    .fifth .fib {
+        width: 50%;
+    }
+
+    .fifth .fi1 {
+        font-size: 50px;
+        margin-top: 150px;
+    }
+
+    .fifth .fi2 {
+        height: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        font-size: 20px;
+        margin-top: 30px;
+    }
+
+    .fifth .fi2 button {
+        font-size: 25px;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        color: rgb(3, 175, 243);
+        background-color: white;
+        border: 1px solid gainsboro;
+        box-shadow: 1px 1px 1px gainsboro;
+    }
+
+    .fifth .fib .fi2 .exp {
+        font-size: 25px;
+        font-weight: 530;
+    }
+
+    .fifth .fib .fi2 .exp1 {
+        display: none;
+    }
+
+    .fifth .fib .fi2 .exp:hover button {
+        transform: rotate(90deg);
+        transition: 0.5s;
+    }
+
+    .fifth .fib .fi2 .team {
+        font-size: 25px;
+        font-weight: 530;
+    }
+
+    .fifth .fib .fi2 .team1 {
+        display: none;
+    }
+
+    .fifth .fib .fi2 .team:hover button {
+        transform: rotate(90deg);
+        transition: 0.5s;
+    }
+
+    .fifth .fib .fi2 .price {
+        font-size: 25px;
+        font-weight: 530;
+    }
+
+    .fifth .fib .fi2 .price1 {
+        display: none;
+    }
+
+    .fifth .fib .fi2 .price:hover button {
+        transform: rotate(90deg);
+        transition: 0.5s;
+    }
+
+    .fifth .fic {
+        width: 100%;
+        height: 300px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .fic .fic1 {
+        border: 1px solid lightgrey;
+        width: 350px;
+        height: 180px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .fic1 .fica {
+        font-size: 60px;
+        color: rgb(3, 175, 243);
+    }
+
+    .fic1 .ficb {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .fic1 .ficb .sp1 {
+        font-size: 28px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .fic1 .ficb .sp1:hover{
+      color:rgb(4, 115, 219);
+      transition:0.5s;
+    }
+
+    .fic1 .ficb .sp2 {
+        font-size: 15px;
+        color: darkgrey;
+    }
+
+    .sixth {
+        width: 100%;
+        height: 500px;
+        background-color: rgb(239, 243, 248);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sia {
+        font-size: 60px;
+        margin-top: 80px;
+    }
+
+    .sib {
+        width: 80%;
+        height: 100px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .sib1 {
+        width: max-content;
+        width: 280%;
+        height: 50px;
+        transition: all 1s;
+        display: flex;
+        justify-content: space-evenly;
+        /* animation-name: sliderr;
+        animation-iteration-count:infinite;
+        animation-timing-function:linear;
+        animation-duration: 50s; */
+    }
+
+    /* @keyframes sliderr {
+        33%{
+            transform: translatex(-33%);
+        }
+
+        66%{
+            transform: translatex(-66%);
+        }
+
+        99%{
+            transform: translatex(-99%);
+        }
+    } */
+
+
+    .sib .si1 {
+        font-family: arial;
+        font-size: 20px;
+        color: darkgrey;
+        text-align: center;
+        display: inline-block;
+    }
+
+    .sic {
+        width: 700px;
+        height: 150px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .sic1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+
+    }
+
+    .sic1 .imgg {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+    }
+
+    .imgg img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
+
+    .sic1 .spa {
+        font-size: 20px;
+        font-family: arial;
+    }
+
+    .sic1 .spb {
+        color: rgb(3, 175, 243);
+    }
+
+    .seventh {
+        width: 100%;
+        height: 950px;
+    }
+
+    .seventh .se1 {
+        font-size: 50px;
+        text-align: center;
+        margin-top: 70px;
+    }
+
+    .seventh .se2 {
+        width: 95%;
+        height: 750px;
+        margin-left: 30px;
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .se2 .se2a {
+        width: 48.5%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+
+    .se2a .se2c {
+        width: 100%;
+        height: 65%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .se2a .d {
+        width: 100%;
+        height: 32%;
+        position: relative;
+    }
+
+    .se2a .se2d {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+
+    .se2a .hov3 {
+        background-color: white;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transform: scale(0);
+        transition: transform 0.8s, opacity 0.2s;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .se2a .d:hover .hov3 {
+        opacity: 0.95;
+        transform: scale(1.0);
+    }
+
+    .d:hover .p1 {
+        transform: translatey(1px);
+        opacity: 1;
+    }
+
+    .d:hover .p2 {
+        transform: translatey(1px) translatex(1px);
+        opacity: 1;
+    }
+
+
+    .se2c .se2e {
+        width: 48%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .se2c .f {
+        width: 48%;
+        height: 100%;
+        position: relative;
+    }
+
+    .se2c .se2f {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+
+    .se2c .hov2 {
+        background-color: white;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transform: scale(0);
+        transition: transform 0.8s, opacity 0.2s;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .se2c .f:hover .hov2 {
+        opacity: 0.95;
+        transform: scale(1.0);
+    }
+
+    .f:hover .p1 {
+        transform: translatey(1px);
+        opacity: 1;
+    }
+
+    .f:hover .p2 {
+        transform: translatey(1px) translatex(1px);
+        opacity: 1;
+    }
+
+
+    .se2e .g {
+        width: 100%;
+        height: 48%;
+        position: relative;
+    }
+
+    .se2e .se2g {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+
+    .se2e .hov {
+        background-color: white;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transform: scale(0);
+        transition: transform 0.8s, opacity 0.2s;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .se2e .g:hover .hov {
+        opacity: 0.95;
+        transform: scale(1.0);
+    }
+
+    .g:hover .p1 {
+        transform: translatey(1px);
+        opacity: 1;
+    }
+
+    .g:hover .p2 {
+        transform: translatey(1px) translatex(1px);
+        opacity: 1;
+    }
+
+    .se2e .h {
+        width: 100%;
+        height: 48%;
+        position: relative;
+    }
+
+    .se2e .se2h {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+
+    .se2e .hov1 {
+        background-color: white;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transform: scale(0);
+        transition: transform 0.8s, opacity 0.2s;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .se2e .h:hover .hov1 {
+        opacity: 0.95;
+        transform: scale(1.0);
+    }
+
+    .h:hover .p1 {
+        transform: translatey(1px);
+        opacity: 1;
+    }
+
+    .h:hover .p2 {
+        transform: translatey(1px) translatex(1px);
+        opacity: 1;
+    }
+
+
+    .se2 .se2b {
+        width: 48.5%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+
+    .se2b .se2ba {
+        width: 100%;
+        height: 30%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .se2ba .c {
+        width: 48%;
+        height: 100%;
+        position: relative;
+    }
+
+    .se2ba .hov4 {
+        background-color: white;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transform: scale(0);
+        transition: transform 0.8s, opacity 0.2s;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .se2ba .c:hover .hov4 {
+        opacity: 0.95;
+        transform: scale(1.0);
+    }
+
+    .c:hover .p1 {
+        transform: translatey(1px);
+        opacity: 1;
+    }
+
+    .c:hover .p2 {
+        transform: translatey(1px) translatex(1px);
+        opacity: 1;
+    }
+
+    .se2ba .se2bc {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+
+
+    .se2ba .b {
+        width: 48%;
+        height: 100%;
+        position: relative;
+    }
+
+    .se2ba .se2bd {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+
+    .se2ba .hov5 {
+        background-color: white;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transform: scale(0);
+        transition: transform 0.8s, opacity 0.2s;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .se2ba .b:hover .hov5 {
+        opacity: 0.95;
+        transform: scale(1.0);
+    }
+
+    .b:hover .p1 {
+        transform: translatey(1px);
+        opacity: 1;
+    }
+
+    .b:hover .p2 {
+        transform: translatey(1px) translatex(1px);
+        opacity: 1;
+    }
+
+    .se2b .a {
+        width: 100%;
+        height: 67%;
+        position: relative;
+    }
+
+    .se2b .se2bb {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+
+    .se2b .hov6 {
+        background-color: white;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transform: scale(0);
+        transition: transform 0.8s, opacity 0.2s;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .se2b .a:hover .hov6 {
+        opacity: 0.95;
+        transform: scale(1.0);
+    }
+
+    .a:hover .p1 {
+        transform: translatey(1px);
+        opacity: 1;
+    }
+
+    .a:hover .p2 {
+        transform: translatey(1px) translatex(1px);
+        opacity: 1;
+    }
+
+    .se2 img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .se2 .p1 {
+        font-size: 25px;
+        transition: transform 1.2s, opacity 1s;
+        transform: translatey(-50px);
+        opacity: 0;
+    }
+
+    .se2 .p2 {
+        width: 45px;
+        height: 45px;
+        margin-top: 20px;
+        border-radius: 50%;
+        background-color: rgb(3, 175, 243);
+        color: white;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translatey(-50px) translatex(-50px);
+        opacity: 0;
+        transition: transform 1.2s, opacity 1s;
+    }
+
+    .eighth {
+        width: 100%;
+        height: 300px;
+        background-image: url("red-sea-2613882_1280.jpg");
+        background-size:100% 100%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .ei1{
+        font-size: 40px;
+        color: white;
+        font-weight: 550;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .ei1 span{
+        font-size:20px;
+        color:rgb(55, 55, 55);
+    }
+
+    .ei2 input{
+        background-color: transparent;
+        border-top:transparent;
+        border-left: transparent;
+        border-right: transparent;
+        border-bottom:1px solid  white;
+        width:600px;
+        height: 100px;
+    }
+
+    .ei3{
+        background-color: rgb(251, 221, 47);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: monospace;
+        font-size: 20px;
+        font-weight: 550;
+        width:180px;
+        height: 65px;
+        border-radius: 10px;
+    }
+
+    .ei3:hover{
+        background-color: rgb(4, 115, 219);
+        color: white;
+        transition: 0.5s;
+    }
+
+    .nineth {
+        width: 100%;
+        height: 700px;
+    }
+
+    .nin1 {
+        font-size: 50px;
+        margin-top: 70px;
+        text-align: center;
+    }
+
+    .nin2 {
+        margin-top: 40px;
+        width: 100%;
+        height: 450px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .ni {
+        width: 35%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .nia {
+        overflow: hidden;
+    }
+
+    .nin2 .nia:hover img {
+        transform: scale(1.1);
+        transition: transform 0.5s;
+    }
+
+
+    .nib {
+        font-size: 25px;
+    }
+
+    .nic {
+        font-size: 15px;
+        color: darkgray;
+        text-align: center;
+    }
+
+    .nid {
+        font-size: 20px;
+        width: 150px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+
+    .tenth {
+        border:1px solid transparent;
+        width: 100%;
+        height: 700px;
+        background-color: rgb(239,243,248);
+    }
+
+    .ten1 {
+        font-size: 50px;
+        margin-top: 80px;
+        text-align: center;
+    }
+
+    .ten2 {
+        margin-top: 40px;
+        width: 100%;
+        height: 450px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .te {
+        width: 400px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .tea {
+        overflow: hidden;
+    }
+
+    .ten2 .tea:hover img {
+        transform: scale(1.1);
+        transition: transform 0.5s;
+    }
+
+
+    .teb {
+        font-size: 15px;
+        color:darkgrey;
+    }
+
+    .tec {
+        width:250px;
+        font-size: 25px;
+        text-align:left;
+    }
+
+    .ted {
+        font-size: 15px;
+        text-align: center;
+        color:darkgrey;
+    }
+
+    .eleventh{
+        width:100%;
+        height: 620px;
+    }
+
+    .e{   
+        background-color: rgb(42, 51, 63);
+        color: white;
+        font-family: arial;
+        width: 100%;
+        height: 500px;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .el {
+        width: 400px;
+    }
+
+    .el .ela {
+        font-size: 30px;
+        margin-top: 50px;
+    }
+
+    .el .elb {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        width: 350px;
+        height: 220px;
+        margin-top: 50px;
+    }
+
+    .elb1 {
+        overflow: hidden;
+        width: 100px;
+        height: 100px;
+        position: relative;
+    }
+
+    .elb1 img {
+        width: 100%;
+        height: 100%;
+        transform: scale(1.05);
+        position: absolute;
+    }
+
+    .elb1:hover img {
+        transform: scale(1.0);
+        transition: transform 0.5s;
+    }
+
+    .elb1:hover .hove {
+        transform: translatex(-100%) rotate(50deg);
+    }
+
+    .hove {
+        position: absolute;
+        width: 300px;
+        height: 80px;
+        background-color: white;
+        opacity: 0.6;
+        transform: translatex(50%) rotate(50deg);
+        transition: transform 0.8s;
+    }
+
+    .elc {
+        font-size: 30px;
+        margin-top: 50px;
+    }
+
+    .eld {
+        display: flex;
+        width: 400px;
+        height: 170px;
+        margin-top: 37px;
+        font-size: 20px;
+    }
+
+    .eld1 {
+        width: 200px;
+    }
+
+    .eld1a {
+        display: flex;
+        margin-top: 15px;
+    }
+
+    .eld1a:hover {
+        color: rgb(4, 115, 219);
+        transition: 0.5s;
+    }
+
+    .eld1a:hover .a {
+        width: 35px;
+        transition: 0.5s;
+    }
+
+    .a {
+        border: 1.5px solid rgb(88, 88, 88);
+        width: 15px;
+        margin-right: 8px;
+        border-radius: 10px;
+        height: 0.01px;
+        margin-top: 6px;
+    }
+
+    .eld2 {
+        width: 150px;
+        margin-left: 60px;
+    }
+
+    .el .ele {
+        font-size: 30px;
+        margin-top: 50px;
+    }
+
+    .el:nth-child(3) {
+        margin-left: 20px;
+    }
+
+    .elf {
+        margin-top: 40px;
+        width: 300px;
+        height: 170px;
+    }
+
+    .elf1 {
+        margin-top: 20px;
+        display: flex;
+    }
+
+    .elf1 i {
+        color: gold;
+        text-align: left;
+    }
+
+    .elf1 div {
+        text-align: center;
+        margin-left: 25px;
+        text-align: left;
+    }
+
+    .elf1:hover div {
+        color: rgb(4, 115, 219);
+        transition: 0.5s;
+    }
+
+    .elg {
+        display: flex;
+        justify-content: space-between;
+        width: 300px;
+    }
+
+    .elg1 {
+        border: 1px solid rgb(149, 153, 159);
+        color: rgb(149, 153, 159);
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .elg1:hover {
+        border: 1px solid rgb(4, 115, 219);
+        color: rgb(4, 115, 219);
+        transition: 0.5s;
+    }
+
+    .e1{
+        border-top:1px solid rgb(149, 153, 159);
+        color:rgb(149, 153, 159);
+        background-color: rgb(42, 51, 63);
+        width:100%;
+        height:120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 17px;
+        font-family: arial;
+    }
+</style>
+
+<body>
+    <!-- slider -->
+    <div class="first">
+        <div class="box" id="box">
+            <div class="images">
+                <img src="dive-1808717_1280.jpg" alt="">
+                <div class="text" id="text1">
+                    <div class="a1">Best Equipment and Instructors</div>
+                    <div class="a2">Our team and the top-notch equipment guarantee unforgettable diving.</div>
+                    <div class="a3">Read More</div>
+                </div>
+            </div>
+            <div class="images">
+                <img src="diving-1049470_1280.jpg" alt="">
+                <div class="text" id="text2">
+                    <div class="a1">Enjoy Scuba diving with us</div>
+                    <div class="a2">We offer a wide variety of scuba diving tours and locations for everyone.</div>
+                    <div class="a3">Read More</div>
+                </div>
+            </div>
+            <div class="images"><img src="diving-1049477_1280.jpg" alt="">
+                <div class="text" id="text3">
+                    <div class="a1">Best Equipment and Instructors</div>
+                    <div class="a2">Our team and the top-notch equipment guarantee unforgettable diving.</div>
+                    <div class="a3">Read More</div>
+                </div>
+            </div>
+            <div class="images"><img src="manatee-387194_1280.jpg" alt="">
+                <div class="text" id="text4">
+                    <div class="a1">Enjoy Scuba diving with us</div>
+                    <div class="a2">We offer a wide variety of scuba diving tours and locations for everyone.</div>
+                    <div class="a3">Read More</div>
+                </div>
+            </div>
+
+            <!-- buttons -->
+            <div class="prev" onclick="clk(-1)">prev</div>
+            <div class="nex" onclick="clk(1)">next</div>
+
+            <div class="top">
+                <div class="b1">
+                    Call us: <span>+1 (844) 123 456 78</span><br />
+                    <span>info@demolink.org</span>
+                </div>
+                <div class="b2">
+                    Divers
+                    <span>DIVING CENTER</span>
+                </div>
+                <div class="b3">search bar</div>
+            </div>
+
+            <div class="navbar" id="navbar">
+                <div class="n1">HOME</div>
+                <div class="n1" onmouseenter="show()" onmouseleave="hide()">PAGES</div>
+                <div class="pages" id="pages">
+                    ABOUT US<br />
+                    WHAT WE offer<br />
+                    OUR TEAM <br />
+                    TESTIMONIALS<br />
+                    PRICING LIST<br />
+                </div>
+                <div class="n1" onmouseenter="show1()" onmouseleave="hide1()">BLOG</div>
+                <div class="blog" id="blog">
+                    GRID BLOG <br />
+                    BLOG POST <br />
+                    BLOG LIST <br />
+                </div>
+                <div class="n1" onmouseenter="show2()" onmouseleave="hide2()">GALLERY</div>
+                <div class="gallery" id="gallery">
+                    GRID GALLERY<br />
+                    GRID FULLWIDTH GALLERY<br />
+                    MASONRY GALLERY<br />
+                    MASONRY FULLWIDTH GALLERY<br />
+                </div>
+                <div class="n1" onmouseenter="show3()" onmouseleave="hide3()">ELEMENTS</div>
+                <div class="elements" id="elements">
+                    TYPOGRAPHY<br />
+                    ICON LISTS<br />
+                    PROGRESS BARS<br />
+                    CALLS TO ACTION<br />
+                    TABS & ACCORDIONS<br />
+                </div>
+                <div class="n1">CONTACTS</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="second">
+        <div class="c1" id="dest">Destinations</div>
+        <div class="c2">
+            <div class="c2a" id="mal"><img src="divers.jpeg" alt="">
+                <span class="sp1">Maldives</span>
+                <span class="sp2">True abundance of marine life</span>
+                <div>BOOK NOW</div>
+            </div>
+            <div class="c2a" id="ind"><img src="divers1.jpg" alt="">
+                <span class="sp1">Indonesia</span>
+                <span class="sp2">unique marine diversity</span>
+                <div>BOOK NOW</div>
+            </div>
+            <div class="c2a" id="aust">
+                <img src="dive-1808717_1280.jpg" alt="">
+                <span class="sp1">Australia</span>
+                <span class="sp2">The world's top scuba destination</span>
+                <div>BOOK NOW</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="third">
+        <div class="bx">
+            <div class="bx1" id="bx1">
+                <div class="d1">Best Equipment</div>
+                <div class="d2">our agency provide first-class equipment for all our clients, regardless of their level.
+                </div>
+            </div>
+            <div class="bx2" id="bx2">
+                <div class="d1">Exciting Places</div>
+                <div class="d2">our agency provide first-class equipment for all our clients, regardless of their level.
+                </div>
+            </div>
+        </div>
+
+        <div class="bx"><img src="scuba-diver-339165_1280.jpg" alt=""></div>
+
+        <div class="bx">
+            <div class="bx3" id="bx3">
+                <div class="d1">100% Safety</div>
+                <div class="d2">our agency provide first-class equipment for all our clients, regardless of their level.
+                </div>
+            </div>
+            <div class="bx4" id="bx4">
+                <div class="d1">Instructors</div>
+                <div class="d2">our agency provide first-class equipment for all our clients, regardless of their level.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fourth">
+        <div class="f">
+            <div class="f1" id="f11"></div>
+            <div class="f2">Monthly<br /> Clients</div>
+        </div>
+        <div class="f">
+            <div class="f1" id="f22"></div>
+            <div class="f2">Special <br />Offers</div>
+        </div>
+        <div class="f">
+            <div class="f1" id="f33"></div>
+            <div class="f2">Positive <br />reviews</div>
+        </div>
+        <div class="f">
+            <div class="f1" id="f44"></div>
+            <div class="f2">Partners throughout <br />the USA</div>
+        </div>
+    </div>
+
+
+    <div class="fifth">
+        <div class="fi">
+            <div class="fia">
+                <div class="slider2">
+                    <div class="imagess"><img src="divers1.jpg" alt=""></div>
+                    <div class="imagess"><img src="scuba-diver-339165_1280.jpg" alt=""></div>
+                    <div class="imagess"><img src="dive-1808717_1280.jpg" alt=""></div>
+                </div>
+                <div class="dot">
+                    <div class="d" onclick="dot(0)"></div>
+                    <div class="d" onclick="dot(1)"></div>
+                    <div class="d" onclick="dot(2)"></div>
+                </div>
+            </div>
+            <div class="fib">
+                <div class="fi1">Why Choose Divers</div>
+                <div class="fi2">
+                    <div class="exp" onclick="showhide()"><button id="but1">></button>20+ Years of Experience in Diving
+                    </div>
+                    <div class="exp1" id="exp1">Our instructors have more than 20 years of experience in diving. It
+                        makes us
+                        the #1
+                        choice among travelers who are looking for unforgettable and 100% safe diving experience with
+                        advice
+                        from the best divers.</div>
+
+                    <div class="team" onclick="showhide1()"><button id="but2">></button>Carefully Chosen Team of
+                        Instructors
+                    </div>
+                    <div class="team1" id="team1">Our experienced team of Diving Professionals all have over 15 years of
+                        diving
+                        experience and have been professionally certified. Our team includes the most experienced SSI
+                        instructors in the world who are always happy to help you.</div>
+
+                    <div class="price" onclick="showhide2()"><button id="but3">></button>Affordable Prices</div>
+                    <div class="price1" id="price1">Divers Center has an affordable pricing policy that allows us to
+                        offer
+                        the best
+                        diving tours and services at reasonable prices. This is one of many reasons why divers from all
+                        over
+                        US choose our center to dive & travel while also saving a lot of money.</div>
+                </div>
+            </div>
+        </div>
+        <div class="fic">
+            <div class="fic1">
+                <div class="fica"><i class="fa-solid fa-map-location-dot"></i></div>
+                <div class="ficb">
+                    <span class="sp1">Different Locations</span>
+                    <span class="sp2">A wide variety of destinations</span>
+                </div>
+            </div>
+            <div class="fic1">
+                <div class="fica"><i class="fa-solid fa-bus"></i></div>
+                <div class="ficb">
+                    <span class="sp1">Free Transfer</span>
+                    <span class="sp2">We offer free transfer to Divers</span>
+                </div>
+            </div>
+            <div class="fic1">
+                <div class="fica"><i class="fa-solid fa-credit-card"></i></div>
+                <div class="ficb">
+                    <span class="sp1">Online Payments</span>
+                    <span class="sp2">Pay for any diving tour online</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sixth">
+        <div class="sia">Testimonials</div>
+        <div class="sib">
+            <div class="sib1" id="sib1">
+                <div class="si1">I had a fantastic weekend at stoney cove with your team. Great people who made my wife
+                    <br /> (Lisa) and I feel very welcome. Thanks for all your help and support with the diving!
+                </div>
+                <div class="si1">What a fantastic weekend spent with the amazingly friendly team at divers! You made us
+                    <br />feel
+                    very welcome and you all were amazing.Thank You.
+                </div>
+                <div class="si1">It was a great first time dive, the team was very friendly and attentive I will have no
+                    <br />hesitation going again and recommmending you to all my friends and colleagues.
+                </div>
+            </div>
+        </div>
+        <div class="sic">
+            <div class="sic1" onclick="dott(1)">
+                <div class="imgg"><img src="beard-1845166_1280.jpg" alt=""></div>
+                <span class="spa">PATRICK GOODMAN</span>
+                <span class="spb">Client</span>
+            </div>
+            <div class="sic1" onclick="dott(2)">
+                <div class="imgg"><img src="portrait-3190849_1280.jpg" alt=""></div>
+                <span class="spa">KATIE SMITH</span>
+                <span class="spb">Client</span>
+            </div>
+            <div class="sic1" onclick="dott(3)">
+                <div class="imgg"><img src="happy-1836445_1280.jpg" alt=""></div>
+                <span class="spa">SAM WILSON</span>
+                <span class="spb">Client</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="seventh">
+        <div class="se1">Gallery</div>
+        <div class="se2">
+            <div class="se2a">
+                <div class="se2c">
+                    <div class="se2e">
+                        <div class="g">
+                            <div class="se2g"><img src="d1.jpg" alt=""></div>
+                            <div class="hov">
+                                <div class="p1">Barrcuda Point</div>
+                                <div class="p2"><i class="fa-solid fa-magnifying-glass"></i></div>
+                            </div>
+                        </div>
+                        <div class="h">
+                            <div class="se2h"><img src="d2.jpg" alt=""></div>
+                            <div class="hov1">
+                                <div class="p1">Shark and Yolanda reef </div>
+                                <div class="p2"><i class="fa-solid fa-magnifying-glass"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="f">
+                        <div class="se2f"><img src="d3.jpg" alt=""></div>
+                        <div class="hov2">
+                            <div class="p1">Blue Corner Wall</div>
+                            <div class="p2"><i class="fa-solid fa-magnifying-glass"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d">
+                    <div class="se2d"><img src="d4.jpg" alt=""></div>
+                    <div class="hov3">
+                        <div class="p1">Great Blue Hole</div>
+                        <div class="p2"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="se2b">
+                <div class="se2ba">
+                    <div class="c">
+                        <div class="se2bc"><img src="d5.jpg" alt=""></div>
+                        <div class="hov4">
+                            <div class="p1">The Yongala</div>
+                            <div class="p2"><i class="fa-solid fa-magnifying-glass"></i></div>
+                        </div>
+                    </div>
+                    <div class="b">
+                        <div class="se2bd"><img src="d6.jpg" alt=""></div>
+                        <div class="hov5">
+                            <div class="p1">Thistlegorm</div>
+                            <div class="p2"><i class="fa-solid fa-magnifying-glass"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="a">
+                    <div class="se2bb"><img src="d7.jpg" alt=""></div>
+                    <div class="hov6">
+                        <div class="p1">Manta Ray Night Dive</div>
+                        <div class="p2"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="eighth">
+            <div class="ei1">Newsletter <span>subscribe to our newsletter</span></div>
+            <div class="ei2"><input type="text" placeholder="enter your email"></div>
+            <div class="ei3">Subscribe</div>
+        </div>
+
+        <div class="nineth">
+            <div class="nin1">Instructors</div>
+            <div class="nin2">
+                <div class="ni">
+                    <div class="nia"><img src="team-4-270x227.jpg" alt=""></div>
+                    <div class="nib">Peter Martinez</div>
+                    <div class="nic">Peter is PADI Course Director and our company’s Founder</div>
+                    <div class="nid"><i class="fa-brands fa-facebook-f"></i><i class="fa-brands fa-twitter"></i><i
+                            class="fa-brands fa-instagram"></i><i class="fa-brands fa-google-plus-g"></i></div>
+                </div>
+                <div class="ni">
+                    <div class="nia"><img src="team-5-270x227.jpg" alt=""></div>
+                    <div class="nib">Jane MacMillan</div>
+                    <div class="nic">Jane is Divers’s Specialty Instructor Trainer who joined us in 2010.</div>
+                    <div class="nid"><i class="fa-brands fa-facebook-f"></i><i class="fa-brands fa-twitter"></i><i
+                            class="fa-brands fa-instagram"></i><i class="fa-brands fa-google-plus-g"></i></div>
+                </div>
+                <div class="ni">
+                    <div class="nia"><img src="team-6-270x227.jpg" alt=""></div>
+                    <div class="nib">John Smith</div>
+                    <div class="nic">John has been working with us since day one as PADI Divemaster.Peter is PADI Course
+                        Director and our company’s Founder</div>
+                    <div class="nid"><i class="fa-brands fa-facebook-f"></i><i class="fa-brands fa-twitter"></i><i
+                            class="fa-brands fa-instagram"></i><i class="fa-brands fa-google-plus-g"></i></div>
+                </div>
+                <div class="ni">
+                    <div class="nia"><img src="team-7-270x227.jpg" alt=""></div>
+                    <div class="nib">Sam Williams</div>
+                    <div class="nic">Sam is Divers’s PADI Open Water Scuba Instructor.</div>
+                    <div class="nid"><i class="fa-brands fa-facebook-f"></i><i class="fa-brands fa-twitter"></i><i
+                            class="fa-brands fa-instagram"></i><i class="fa-brands fa-google-plus-g"></i></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tenth">
+            <div class="ten1">Our Blog</div>
+            <div class="ten2">
+                <div class="te">
+                    <div class="tea"><img src="post-1-370x239.jpg" alt=""></div>
+                    <div class="teb">August 9, 2021</div>
+                    <div class="tec">New Caledonia: The Lagoon of All Hopes</div>
+                    <div class="ted">As we dived for the very first time in the lagoon of New Caledonia, at Duck Island,
+                        with only our masks and fins...</div>
+                </div>
+                <div class="te">
+                    <div class="tea"><img src="post-2-370x239.jpg" alt=""></div>
+                    <div class="teb">August 9, 2021</div>
+                    <div class="tec">Scuba Diving in Okinawa: A First-timer Guide</div>
+                    <div class="ted">It is one of these places where it is not so straightforward to organize a scuba
+                        diving trip. There are so many...</div>
+                </div>
+                <div class="te">
+                    <div class="tea"><img src="post-3-370x239.jpg" alt=""></div>
+                    <div class="teb">August 9, 2021</div>
+                    <div class="tec">Shore Diving in Maui & Big Island</div>
+                    <div class="ted">The Hawaiian Archipelago is full of bucket list dives with exciting adventures such
+                        as diving in the crater...</div>
+                </div>
+            </div>
+        </div>
+
+        
+    <div class="eleventh">
+        <div class="e">
+            <div class="el">
+                <div class="ela">Gallery</div>
+                <div class="elb">
+                    <div class="elb1"><img src="grid1.jpg" alt="">
+                        <div class="hove"></div>
+                    </div>
+                    <div class="elb1"><img src="grid2.jpg" alt="">
+                        <div class="hove"></div>
+                    </div>
+                    <div class="elb1"><img src="grid3.jpg" alt="">
+                        <div class="hove"></div>
+                    </div>
+                    <div class="elb1"><img src="grid4.jpg" alt="">
+                        <div class="hove"></div>
+                    </div>
+                    <div class="elb1"><img src="grid5.jpg" alt="">
+                        <div class="hove"></div>
+                    </div>
+                    <div class="elb1"><img src="grid6.jpg" alt="">
+                        <div class="hove"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="el">
+                <div class="elc">Quick Links</div>
+                <div class="eld">
+                    <div class="eld1">
+                        <div class="eld1a">
+                            <div class="a"></div> About Us
+                        </div>
+                        <div class="eld1a">
+                            <div class="a"></div> What We Offer
+                        </div>
+                        <div class="eld1a">
+                            <div class="a"></div> FAQ
+                        </div>
+                        <div class="eld1a">
+                            <div class="a"></div> Instructors
+                        </div>
+                    </div>
+                    <div class="eld2">
+                        <div class="eld1a">
+                            <div class="a"></div> Contact Us
+                        </div>
+                        <div class="eld1a">
+                            <div class="a"></div> Blog
+                        </div>
+                        <div class="eld1a">
+                            <div class="a"></div> Gallery
+                        </div>
+                        <div class="eld1a">
+                            <div class="a"></div> Pricing
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="el">
+                <div class="ele">Get in touch</div>
+                <div class="elf">
+                    <div class="elf1"><i class="fa-solid fa-location-dot"></i>
+                        <div>523 Sylvan Ave, 5th Floor
+                            Mountain View, CA 94041 USA</div>
+                    </div>
+                    <div class="elf1"><i class="fa-solid fa-phone"></i>
+                        <div>+1 (844) 123 456 78</div>
+                    </div>
+                    <div class="elf1"><i class="fa-regular fa-envelope"></i>
+                        <div>info@demolink.org</div>
+                    </div>
+                </div>
+                <div class="elg">
+                    <div class="elg1"><i class="fa-brands fa-facebook-f"></i></div>
+                    <div class="elg1"><i class="fa-brands fa-twitter"></i></div>
+                    <div class="elg1"><i class="fa-brands fa-instagram"></i></div>
+                    <div class="elg1"><i class="fa-brands fa-google-plus-g"></i></div>
+                    <div class="elg1"><i class="fa-brands fa-skype"></i></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="e1">©  2024 Divers.  All rights reserved. Privacy Policy.</div>
+    </div>
+
+
+</body>
+
+</html>
+<script>
+
+
+    function att() {
+        myslider(f);
+        f = f + 1;
+        setTimeout(att, 5000)
+    }
+
+    function clk(v) {
+        f = f + v;
+        myslider(f)
+    }
+
+    f = 0;
+    att()
+
+    function myslider(ff) {
+
+
+        let images1 = document.getElementsByClassName("images")
+        for (i = 0; i < images1.length; i++) {
+            images1[i].style.display = "none"
+        }
+
+        if (ff == images1.length) {
+            ff = 0;
+            f = 0;
+        }
+
+        if (ff < 0) {
+            ff = images1.length - 1;
+            f = images1.length - 1;
+        }
+        images1[ff].style.display = "block"
+
+    }
+
+    function show() {
+        let pages1 = document.getElementById("pages")
+        pages1.style.display = "block"
+    }
+
+    function hide() {
+        let pages1 = document.getElementById("pages")
+        pages1.style.display = "none"
+    }
+
+    function show1() {
+        let blog1 = document.getElementById("blog")
+        blog1.style.display = "block"
+    }
+
+    function hide1() {
+        let blog1 = document.getElementById("blog")
+        blog1.style.display = "none"
+    }
+
+    function show2() {
+        let gallery1 = document.getElementById("gallery")
+        gallery1.style.display = "block"
+    }
+
+    function hide2() {
+        let gallery1 = document.getElementById("gallery")
+        gallery1.style.display = "none"
+    }
+
+    function show3() {
+        let elements1 = document.getElementById("elements")
+        elements1.style.display = "block"
+    }
+
+    function hide3() {
+        let elements1 = document.getElementById("elements")
+        elements1.style.display = "none"
+    }
+
+
+
+    window.onscroll = function () {
+        onscrol()
+        count1()
+        count2()
+        count3()
+        count4()
+    }
+
+
+    function onscrol() {
+        let text11 = document.getElementById("text1")
+        let text22 = document.getElementById("text2")
+        let text33 = document.getElementById("text3")
+        let text44 = document.getElementById("text4")
+
+        let dest1 = document.getElementById("dest")
+        let mal1 = document.getElementById("mal")
+        let ind1 = document.getElementById("ind")
+        let aust1 = document.getElementById("aust")
+
+        let bx11 = document.getElementById("bx1")
+        let bx22 = document.getElementById("bx2")
+        let bx33 = document.getElementById("bx3")
+        let bx44 = document.getElementById("bx4")
+
+        let navbar1=document.getElementById("navbar")
+
+        if (document.documentElement.scrollTop > 10) {
+            text11.style.transform = "translate(50px)"
+        }
+
+        if (document.documentElement.scrollTop > 10) {
+            text22.style.transform = "translate(50px)"
+        }
+
+        if (document.documentElement.scrollTop > 10) {
+            text33.style.transform = "translate(50px)"
+        }
+
+        if (document.documentElement.scrollTop > 10) {
+            text44.style.transform = "translate(50px)"
+        }
+
+
+        if (document.documentElement.scrollTop > 200) {
+            dest1.style.transform = "scale(1)"
+        }
+
+        if (document.documentElement.scrollTop > 300) {
+            mal1.style.transform = "translatey(-5px)"
+        }
+
+        if (document.documentElement.scrollTop > 300) {
+            ind1.style.transform = "translatey(-5px)"
+        }
+
+        if (document.documentElement.scrollTop > 300) {
+            aust1.style.transform = "translatey(-5px)"
+        }
+
+        if (document.documentElement.scrollTop > 700) {
+            bx11.style.transform = "translate(100px)"
+        }
+
+        if (document.documentElement.scrollTop > 700) {
+            bx22.style.transform = "translate(100px)"
+        }
+
+        if (document.documentElement.scrollTop > 700) {
+            bx33.style.transform = "translate(-30px)"
+        }
+
+        if (document.documentElement.scrollTop > 700) {
+            bx44.style.transform = "translate(-30px)"
+        }
+
+        if(document.documentElement.scrollTop > 50){
+            navbar1.style.position="fixed"
+            navbar1.style.top="0"
+            navbar1.style.backgroundColor="white"
+            navbar1.style.color="black"
+        }
+
+        else{
+            navbar1.style.top="150px"
+            navbar1.style.backgroundColor="transparent"
+            navbar1.style.color="white"
+        }
+
+    }
+
+
+    v1 = 1
+    function count1() {
+        if (document.documentElement.scrollTop > 1600) {
+            let f111 = document.getElementById("f11");
+            f111.innerHTML = v1
+            if (v1 <= 244) {
+                v1 = v1 + 1;
+                setTimeout(count1,)
+            }
+        }
+    }
+
+
+    v2 = -10;
+    function count2() {
+        if (document.documentElement.scrollTop > 1600) {
+            let f222 = document.getElementById("f22")
+            f222.innerHTML = v2
+            if (v2 <= 181) {
+                v2 = v2 + 1;
+                setTimeout(count2,)
+            }
+        }
+    }
+
+    count2()
+
+    v3 = 700;
+
+    function count3() {
+        if (document.documentElement.scrollTop > 1600) {
+            let f333 = document.getElementById("f33")
+            f333.innerHTML = v3
+            if (v3 <= 1246) {
+                v3 = v3 + 1;
+
+                setTimeout(count3,)
+            }
+        }
+    }
+
+
+    v4 = -100;
+
+    function count4() {
+        if (document.documentElement.scrollTop > 1600) {
+            let f444 = document.getElementById("f44")
+            f444.innerHTML = v4
+
+            if (v4 <= 46) {
+                v4 = v4 + 1;
+                setTimeout(count4,)
+            }
+        }
+    }
+
+
+    a = 0;
+
+    function run() {
+        myslider2(a)
+        a = a + 1;
+        setTimeout(run, 20000)
+    }
+
+    run()
+
+    function dot(g) {
+        myslider2(g)
+    }
+
+    function myslider2(aa) {
+        let imagess1 = document.getElementsByClassName("imagess")
+        let d1 = document.getElementsByClassName("d")
+        for (k = 0; k < imagess1.length; k++) {
+            imagess1[k].style.display = "none"
+            d1[k].style.backgroundColor = "gainsboro"
+        }
+
+        if (aa == imagess1.length) {
+            aa = 0;
+            a = 0;
+        }
+
+        imagess1[aa].style.display = "block"
+        d1[aa].style.backgroundColor = "rgb(3, 175, 243)"
+    }
+
+
+
+    function showhide() {
+        let exp11 = document.getElementById("exp1")
+        let but11 = document.getElementById("but1")
+
+        if (exp11.style.display == "block") {
+            exp11.style.display = "none"
+            but11.style.transform = "rotate(0deg)"
+            but11.style.backgroundColor="white"
+            but11.style.color="rgb(3, 175, 243)"
+        }
+
+        else {
+            exp11.style.display = "block"
+            but11.style.transform = "rotate(-90deg)"
+            but11.style.backgroundColor="rgb(3, 175, 243)"
+            but11.style.color="white"
+
+        }
+    }
+
+    function showhide1() {
+        let team11 = document.getElementById("team1")
+        let but22 = document.getElementById("but2")
+
+        if (team11.style.display == "block") {
+            team11.style.display = "none"
+            but22.style.transform = "rotate(0deg)"
+            but22.style.backgroundColor="white"
+            but22.style.color="rgb(3, 175, 243)"
+        }
+
+        else {
+            team11.style.display = "block"
+            but22.style.transform = "rotate(-90deg)"
+            but22.style.backgroundColor="rgb(3, 175, 243)"
+            but22.style.color="white"
+        }
+    }
+
+    function showhide2() {
+        let price11 = document.getElementById("price1")
+        let but33 = document.getElementById("but3")
+
+        if (price11.style.display == "block") {
+            price11.style.display = "none"
+            but33.style.transform = "rotate(0deg)"
+            but33.style.backgroundColor="white"
+            but33.style.color="rgb(3, 175, 243)"
+        }
+
+        else {
+            price11.style.display = "block"
+            but33.style.transform = "rotate(-90deg)"
+            but33.style.backgroundColor="rgb(3, 175, 243)"
+            but33.style.color="white"
+        }
+    }
+
+    function dott(n) {
+
+        let sib11 = document.getElementById("sib1")
+
+        if (n == 1) {
+            sib11.style.transform = "translate(-0%)"
+        }
+
+        if (n == 2) {
+            sib11.style.transform = "translate(-33%)"
+        }
+
+        if (n == 3) {
+            sib11.style.transform = "translate(-66%)"
+        }
+
+    }
+    z = 0;
+    function myslider3() {
+        let sib11 = document.getElementById("sib1");
+        if (z == 3) {
+            z = 0
+        }
+
+        z1 = z * 33;
+        zz = "translate(-" + z1 + "%)"
+        sib11.style.transform = zz
+        z = z + 1
+        setTimeout(myslider3, 5000)
+
+    }
+
+    myslider3()
+
+
+</script>
